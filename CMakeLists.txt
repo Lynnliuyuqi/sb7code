@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 
 project (superbible7)
 
-LINK_DIRECTORIES( ${CMAKE_SOURCE_DIR}/lib )
+LINK_DIRECTORIES( ${CMAKE_BINARY_DIR}/lib )
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -148,6 +148,9 @@ endforeach(EXAMPLE)
 IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_LINUX -std=c++0x")
 ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
+# 添加子项目 glfw-3.0.4
+add_subdirectory(extern/glfw-3.0.4)
 
 include_directories( include )
 include_directories(extern/glfw-3.0.4/include)
